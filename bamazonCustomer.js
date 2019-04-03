@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "",
+    password: "Jlmyhd60*",
     database: "bamazon_DB"
 });
 // connect to the MYSQL server and database
@@ -77,6 +77,7 @@ connection.query("SELECT * FROM products", function(err, res) {
               console.log("Your order has been placed");
               console.log("Total cost: $" + (unitNum * chosenProduct.price));
               console.log("=======================================================");
+              startOver();
 
           })
       } else {
@@ -85,12 +86,13 @@ connection.query("SELECT * FROM products", function(err, res) {
         console.log("Sorry, that item is out of stock");
         console.log("");
         console.log("=======================================================");
+        startOver();
       };
   });
 });
 }
 
-
+function startOver() {
 inquirer
 .prompt({
   name: "buyOrExit",
@@ -115,3 +117,5 @@ inquirer
     connection.end();
   }
 });
+}
+startOver();
